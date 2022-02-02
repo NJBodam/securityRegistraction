@@ -30,18 +30,18 @@ public class Person implements UserDetails {
     private Long id;
     private String firstName;
     private String lastName;
+    private String username;
     private String password;
-    private String email;
     @Enumerated(EnumType.STRING)  // *
     private PersonRole role;
     private Boolean locked;
     private Boolean enabled;
 
-    public Person(String firstName, String lastName, String password, String email, PersonRole role, Boolean locked, Boolean enabled) {
+    public Person(String firstName, String lastName, String username, String password, PersonRole role, Boolean locked, Boolean enabled) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.password = password;
-        this.email = email;
         this.role = role;
         this.locked = locked;
         this.enabled = enabled;
@@ -58,11 +58,9 @@ public class Person implements UserDetails {
         return password;
     }
 
-    @Override
     public String getUsername() {
-        return null;
+        return username;
     }
-
 
     @Override
     public boolean isAccountNonExpired() {
