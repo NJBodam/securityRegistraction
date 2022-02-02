@@ -25,14 +25,14 @@ public class PersonService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return personRespository.findByEmail(email).orElseThrow(() ->
-                new UsernameNotFoundException(String.format(USER_NOT_FOUND, email)));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return personRespository.findByUsername(username).orElseThrow(() ->
+                new UsernameNotFoundException(String.format(USER_NOT_FOUND, username)));
     }
 
     public String signUpUser(Person person) {
         String response = String.format(USER_EXIST, person.getUsername());
-        Optional<Person> userExist = personRespository.findByEmail(person.getUsername());
+        Optional<Person> userExist = personRespository.findByUsername(person.getUsername());
         if (userExist.isPresent()) {
             throw new IllegalStateException(response);
         }

@@ -49,7 +49,7 @@ public class Person implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+role.name());
         return Collections.singletonList(authority); //find out why this line of code
     }
 

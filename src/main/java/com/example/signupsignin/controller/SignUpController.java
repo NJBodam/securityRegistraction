@@ -35,6 +35,9 @@ public class SignUpController {
                 loginDto.getUsernameOrEmail(), loginDto.getPassword()));*/
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDto.getUsername(), signInDto.getPassword()));
+
+            System.out.println("I am in sign in"+authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDto.getUsername(), signInDto.getPassword())));
+
         } catch (Exception e) {
             throw new Exception("incorrect username or password!");
         }
